@@ -1,5 +1,5 @@
-#ifndef PhoneBook_HPP
-#define PhoneBook_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 #include "Contact.hpp"
 
 class PhoneBook

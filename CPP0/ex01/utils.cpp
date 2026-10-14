@@ -23,6 +23,25 @@ bool readField(const std::string &prompt, std::string &line)
 	}
 }
 
+bool isValidPhone(const std::string &phone)
+{
+	if (phone.find_first_not_of("0123456789") != std::string::npos)
+		return false;
+	return true;
+}
+
+bool readPhone(const std::string &prompt, std::string &line)
+{
+	while (true)
+	{
+		if (!readField(prompt, line))
+			return false;
+		if (isValidPhone(line))
+			return true;
+		else 
+			std::cout << "Phone number should only be digits !" << std::endl;
+	}
+}
 std::string truncateText(const std::string &origin)
 {
 	if (origin.length() > 10)

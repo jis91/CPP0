@@ -26,7 +26,7 @@ bool PhoneBook::addContact()
 		return false;
 	if (!readField("Enter Nickname :", nickName))
 		return false;
-	if (!readField("Enter Phone number :", phone))
+	if (!readPhone("Enter Phone number :", phone))
 		return false;
 	if (!readField("Enter your darkest secret :", secret))
 		return false;
@@ -55,8 +55,10 @@ bool PhoneBook::search()
 		std::string	line;
 		std::string rest;
 		int index = -1;
-		if (!readInput(">PhoneBook> Type index number to display full contact informations : ", line))
+		if (!readInput("Type index number to display full contact information or leave blank to return to menu : ", line))
 			return false;
+		if (line.empty())
+			return true;
 		std::stringstream ss(line);
 		if (!(ss >> index))
 		{
@@ -74,9 +76,8 @@ bool PhoneBook::search()
 			continue;
 		}
 		displayContact(index - 1);
-		break;
+		return true;
 	}
-	return true;
 }
 
 void PhoneBook::displayPhonebook() const
